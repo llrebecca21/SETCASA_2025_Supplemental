@@ -10,10 +10,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<meta name="author" content="Rebecca Lee (SETCASA 2025)" />
+<meta name="author" content="Rebecca Lee" />
 
 
-<title>References</title>
+<title>SETCASA 2025 Supplemental</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -47,13 +47,87 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 
 <section class="page-header">
-<h1 class="title toc-ignore project-name">References</h1>
-<h4 class="author project-author">Rebecca Lee (SETCASA 2025)</h4>
+<h1 class="title toc-ignore project-name">SETCASA 2025 Supplemental</h1>
+<h4 class="author project-author">Rebecca Lee</h4>
 </section>
 
 
+<div id="TOC" class="toc">
+<div class="toc-box">
+<ul>
+<li><a href="#derivation-of-decomposition-of-fomega" id="toc-derivation-of-decomposition-of-fomega">Derivation of
+Decomposition of <span class="math inline">\(f(\omega)\)</span></a></li>
+<li><a href="#references" id="toc-references">References</a></li>
+</ul>
+</div>
+</div>
 
 <section class="main-content">
+<div id="derivation-of-decomposition-of-fomega" class="section level1">
+<h1>Derivation of Decomposition of <span class="math inline">\(f(\omega)\)</span></h1>
+<p>Assume a single zero-mean stationary time series <span class="math inline">\(\{X_t\}\)</span> with realizations <span class="math inline">\(\{x_t\}^n_{t=1}\)</span>.</p>
+<p>Then we can write the <strong>Cramér spectral representation</strong>
+<span class="citation">(Cramér 1942)</span> of the process <span class="math inline">\(\{X_t\}\)</span> for all <span class="math inline">\(t\)</span> as: <span class="math display">\[X_t =
+\int_0^{2\pi}e^{it\omega}dZ(\omega),\]</span> where <span class="math inline">\(dZ(\omega)\)</span> is an orthogonal process with
+the following properties <span class="citation">(Brockwell and Davis
+2016)</span></p>
+<ul>
+<li><p><span class="math inline">\(\mathbb{E}[dZ(\omega)] = 0\)</span>
+\quad for all <span class="math inline">\(\omega\)</span></p></li>
+<li><p><span class="math inline">\(\mathbb{E}[|dZ(\omega)|^2] =
+dF(\omega)\)</span>, for all <span class="math inline">\(\omega\)</span>, where <span class="math inline">\(F(\omega)\)</span> is the non-normalized
+integrated spectrum of <span class="math inline">\(X_t\)</span>.</p></li>
+<li><p>For any two distinct frequencies <span class="math inline">\(\omega\)</span>, <span class="math inline">\(\omega&#39;\)</span>, <span class="math inline">\((\omega \ne \omega&#39;)\)</span>, <span class="math inline">\(\text{cov}[dZ(\omega), dZ(\omega&#39;)] =
+\mathbb{E}[dZ^*(\omega)dZ(\omega&#39;)] = 0\)</span></p></li>
+</ul>
+<p>If the autocovariance function of <span class="math inline">\(\{X_t\}\)</span> is absolutely summable, then the
+SDF exists, i.e., <span class="math inline">\(dF(\omega) =
+f(\omega)d\omega\)</span>.</p>
+<p>For any such time series, we can express it as a deviation from a
+“global” process: <span class="math display">\[
+    X_t = \int_0^{2\pi}{\Gamma(\omega)}e^{it\omega}{dZ_0(\omega)},
+\]</span></p>
+<p>where <span class="math inline">\({dZ_0(\omega)}\)</span> is an
+orthogonal increment process where</p>
+<p><span class="math display">\[
+    \mathbb{E}[|{dZ_0(\omega)}|^2] = {f_0(\omega)}d\omega,
+\]</span> and <span class="math inline">\({\Gamma(\omega)}\)</span> is
+called a <strong>transfer function</strong> and is independent of <span class="math inline">\({dZ_0(\omega)}\)</span>.</p>
+<p>Denoting the complex conjugate of the time series as <span class="math inline">\(\{X_t^*\}\)</span> and applying the
+Wiener-Khintchine theorem we can show that:</p>
+<span class="math display">\[\begin{aligned}
+    X^*_t X_{t-h} &amp;= \int\int
+\Gamma^*(\omega)e^{-it\omega}\Gamma(\omega&#39;)e^{i(t-h)\omega&#39;}dZ_0^*(\omega)dZ_0(\omega&#39;)\nonumber\\
+    \mathbb{E}[X^*_t X_{t-h}] &amp;= \int\int
+\mathbb{E}[\Gamma^*(\omega)\Gamma(\omega&#39;)]e^{it(\omega&#39; -
+\omega)}e^{ih\omega&#39;}\mathbb{E}[dZ_0^*(\omega)dZ_0(\omega&#39;)]\nonumber\\
+    \gamma(h) &amp;= \int_{0}^{2\pi}
+\mathbb{E}[|{\Gamma(\omega)}|^2]e^{ih\omega}
+\mathbb{E}[|{dZ_0(\omega)}|^2]\nonumber\\
+    {\int_{0}^{2\pi}e^{ih\omega}f(\omega)d\omega} &amp;= \int_{0}^{2\pi}
+{E(\omega)}e^{ih\omega} {f_0(\omega)}d\omega.
+\end{aligned}\]</span>
+<p>Thus for almost all <span class="math inline">\(\omega\)</span>,<br />
+<span class="math display">\[
+    {f(\omega)} = {E(\omega)}{f_0(\omega)}
+\]</span></p>
+<p>Assume multiple (conditionally) independent zero-mean stationary time
+series <span class="math inline">\(\{X_t^{(r)}\}_{r=1}^{R}\)</span> and
+realizations <span class="math inline">\(\{\{x_t^{(r)}\}_{t=1}^{n_r} : r
+= 1,...,R\}\)</span> of possibly different lengths <span class="math inline">\(\{n_r\}_{r=1}^{R}\)</span>.</p>
+<p><span class="math display">\[
+    {f^{(r)}(\omega)} = {E^{(r)}(\omega)}{f_0(\omega)}
+\]</span></p>
+<p>This decomposes the spectral density <span class="math inline">\({f^{(r)}(\omega)}\)</span> of <span class="math inline">\(\{X_t^{(r)}\}\)</span> into what we will call:</p>
+<ul>
+<li><p><span class="math inline">\({E^{(r)}(\omega)}\)</span>: an <span class="math inline">\(\{X_t^{(r)}\}\)</span>-specific
+component.</p></li>
+<li><p><span class="math inline">\({f_0(\omega)}\)</span>: a
+global/population spectral component.</p></li>
+</ul>
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
 <ol style="list-style-type: decimal">
 <li><span class="citation">Shumway (2017)</span></li>
 <li><span class="citation">Diggle and Al Wasel (1997)</span></li>
@@ -67,6 +141,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
 <li><span class="citation">Granados-Garcia et al. (2022)</span></li>
 </ol>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-brockwell2016" class="csl-entry">
+Brockwell, Peter J., and Richard A. Davis. 2016. <em>Introduction to
+Time Series and Forecasting</em>. Springer Texts in Statistics. Cham:
+Springer International Publishing. <a href="https://doi.org/10.1007/978-3-319-29854-2">https://doi.org/10.1007/978-3-319-29854-2</a>.
+</div>
 <div id="ref-cadonna_bayesian_2019" class="csl-entry">
 Cadonna, Annalisa, Athanasios Kottas, and Raquel Prado. 2019.
 <span>“Bayesian <span>Spectral</span> <span>Modeling</span> for
@@ -126,6 +205,7 @@ Wahba, Grace. 1990. <em>Spline Models for Observational Data</em>.
 <span>CBMS</span>-<span>NSF</span> <span>Regional</span>
 <span>Conference</span> Series in Applied Mathematics 59. Philadelphia,
 Pa: Society for Industrial; Applied Mathematics.
+</div>
 </div>
 </div>
 </section>
